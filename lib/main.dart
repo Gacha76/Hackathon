@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hekkathon/welcome_screen.dart';
+import 'package:hekkathon/consts/colors.dart';
+import 'package:hekkathon/consts/routes.dart';
+import 'package:hekkathon/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'TourZone',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: ColorPalette.primaryColor,
+        scaffoldBackgroundColor: ColorPalette.backgroundScaffoldColor,
       ),
-      home: const WelcomeSreen(),
+      routes: routes,
+      home: const SplashScreen(),
     );
   }
 }

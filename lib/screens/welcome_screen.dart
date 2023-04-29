@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hekkathon/home_screen.dart';
-import 'package:hekkathon/utilities/colors.dart';
+import 'package:hekkathon/consts/colors.dart';
+import 'package:hekkathon/screens/intro_screen.dart';
 
-class WelcomeSreen extends StatefulWidget {
-  const WelcomeSreen({super.key});
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
+
+  static const routeName = '/screens/welcome_screen';
 
   @override
-  State<WelcomeSreen> createState() => _WelcomeSreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeSreenState extends State<WelcomeSreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +61,7 @@ class _WelcomeSreenState extends State<WelcomeSreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const HomeScreen()));
+                                builder: (context) => const IntroScreen()));
                       },
                       child: Container(
                         height: 55,
@@ -96,7 +98,7 @@ class _WelcomeSreenState extends State<WelcomeSreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const HomeScreen()));
+                                builder: (context) => const IntroScreen()));
                       },
                       child: Container(
                         height: 55,
