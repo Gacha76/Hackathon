@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hekkathon/helper/asset_helper.dart';
 import 'package:hekkathon/helper/image_helper.dart';
+import 'package:hekkathon/helper/local_storage_helper.dart';
+import 'package:hekkathon/screens/intro_screen.dart';
 import 'package:hekkathon/screens/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,13 +18,22 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    redirectWelcomeScreen();
+    redirectIntroScreen();
   }
 
-  void redirectWelcomeScreen() async {
+  void redirectIntroScreen() async {
+    final ignoreIntroScreen =
+        LocalStorageHelper.getValue("ignoreIntroScreen") as bool?;
     await Future.delayed(const Duration(seconds: 2));
-    if (context.mounted) {
-      Navigator.of(context).pushNamed(WelcomeScreen.routeName);
+    if (ignoreIntroScreen != null && ignoreIntroScreen) {
+      if (context.mounted) {
+        Navigator.of(context).pushNamed(WelcomeScreen.routeName);
+      }
+    } else {
+      LocalStorageHelper.setValue("ignoreIntroScreen", true);
+      if (context.mounted) {
+        Navigator.of(context).pushNamed(IntroScreen.routeName);
+      }
     }
   }
 

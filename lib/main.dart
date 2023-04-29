@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hekkathon/consts/colors.dart';
 import 'package:hekkathon/consts/routes.dart';
+import 'package:hekkathon/helper/local_storage_helper.dart';
 import 'package:hekkathon/screens/splash_screen.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await LocalStorageHelper.initLocalStorageHelper();
   runApp(const MyApp());
 }
 

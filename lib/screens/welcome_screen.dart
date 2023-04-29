@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hekkathon/consts/colors.dart';
-import 'package:hekkathon/screens/intro_screen.dart';
+import 'package:hekkathon/screens/main_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -61,7 +61,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const IntroScreen()));
+                                builder: (context) => const MainScreen()));
                       },
                       child: Container(
                         height: 55,
@@ -98,7 +98,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const IntroScreen()));
+                                builder: (context) => const MainScreen()));
                       },
                       child: Container(
                         height: 55,

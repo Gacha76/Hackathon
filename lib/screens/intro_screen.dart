@@ -4,7 +4,7 @@ import 'package:hekkathon/consts/dimensions.dart';
 import 'package:hekkathon/consts/text_style.dart';
 import 'package:hekkathon/helper/asset_helper.dart';
 import 'package:hekkathon/helper/image_helper.dart';
-import 'package:hekkathon/screens/main_screen.dart';
+import 'package:hekkathon/screens/welcome_screen.dart';
 import 'package:hekkathon/widgets/button_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -139,7 +139,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             );
                           } else {
                             Navigator.of(context)
-                                .pushNamed(MainScreen.routeName);
+                                .pushNamed(WelcomeScreen.routeName);
                           }
                         },
                       ),
