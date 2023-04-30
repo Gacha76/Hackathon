@@ -53,10 +53,10 @@ class _MainScreenState extends State<MainScreen> {
           ),
           SalomonBottomBarItem(
             icon: Icon(
-              FontAwesomeIcons.solidHeart,
+              FontAwesomeIcons.map,
               size: kDefaultIconSize,
             ),
-            title: Text("Likes"),
+            title: Text("Maps"),
           ),
           SalomonBottomBarItem(
             icon: Icon(
