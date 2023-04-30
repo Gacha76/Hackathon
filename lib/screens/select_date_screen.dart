@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hekkathon/consts/colors.dart';
 import 'package:hekkathon/consts/dimensions.dart';
 import 'package:hekkathon/widgets/app_bar_container.dart';
-import 'package:hekkathon/widgets/button_widget.dart';
+import 'package:hekkathon/widgets/item_button_widget.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+// ignore: must_be_immutable
 class SelectDateScreen extends StatelessWidget {
+  SelectDateScreen({super.key});
+
   static const routeName = '/screens/select_date_screen';
 
   DateTime? rangeStartDate;
@@ -13,11 +16,12 @@ class SelectDateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBarContainerWidget(
+    return AppBarContainer(
       titleString: "Select date",
+      paddingContent: EdgeInsets.all(kMediumPadding),
       child: Column(
         children: [
-          SizedBox(height: kMediumPadding * 1.5),
+          SizedBox(height: kMediumPadding),
           SfDateRangePicker(
             view: DateRangePickerView.month,
             selectionMode: DateRangePickerSelectionMode.range,
@@ -33,13 +37,10 @@ class SelectDateScreen extends StatelessWidget {
               if (args.value is PickerDateRange) {
                 rangeStartDate = args.value.startDate;
                 rangeEndDate = args.value.endDate;
-              } else {
-                rangeStartDate = null;
-                rangeEndDate = null;
               }
             },
           ),
-          ButtonWidget(
+          ItemButtonWidget(
             title: "Select",
             ontap: () {
               Navigator.of(context).pop([rangeStartDate, rangeEndDate]);
@@ -48,10 +49,11 @@ class SelectDateScreen extends StatelessWidget {
           SizedBox(
             height: kDefaultPadding,
           ),
-          ButtonWidget(
+          ItemButtonWidget(
             title: "Cancel",
+            color: ColorPalette.primaryColor.withOpacity(0.1),
             ontap: () {
-              Navigator.of(context).pop([rangeStartDate, rangeEndDate]);
+              Navigator.of(context).pop();
             },
           ),
         ],

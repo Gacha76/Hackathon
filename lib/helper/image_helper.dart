@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ImageHelper {
   static Widget loadFromAsset(
@@ -10,16 +11,31 @@ class ImageHelper {
     Color? tintColor,
     Alignment? alignment,
   }) {
-    return ClipRRect(
-      borderRadius: radius ?? BorderRadius.zero,
-      child: Image.asset(
-        imageFilePath,
-        width: width,
-        height: height,
-        fit: fit ?? BoxFit.contain,
-        color: tintColor,
-        alignment: alignment ?? Alignment.center,
-      ),
-    );
+    if (imageFilePath.toLowerCase().endsWith('svg')) {
+      return ClipRRect(
+        borderRadius: radius ?? BorderRadius.zero,
+        child: SvgPicture.asset(
+          imageFilePath,
+          width: width,
+          height: height,
+          fit: fit ?? BoxFit.contain,
+          // ignore: deprecated_member_use
+          color: tintColor,
+          alignment: alignment ?? Alignment.center,
+        ),
+      );
+    } else {
+      return ClipRRect(
+        borderRadius: radius ?? BorderRadius.zero,
+        child: Image.asset(
+          imageFilePath,
+          width: width,
+          height: height,
+          fit: fit ?? BoxFit.contain,
+          color: tintColor,
+          alignment: alignment ?? Alignment.center,
+        ),
+      );
+    }
   }
 }

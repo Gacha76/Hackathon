@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hekkathon/consts/colors.dart';
 import 'package:hekkathon/consts/dimensions.dart';
+import 'package:hekkathon/consts/text_style.dart';
+import 'package:hekkathon/helper/asset_helper.dart';
+import 'package:hekkathon/helper/image_helper.dart';
 import 'package:hekkathon/screens/hotel_booking_screen.dart';
 import 'package:hekkathon/widgets/app_bar_container.dart';
 
@@ -13,12 +16,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Widget _builtItemCategory(
-    Icon icon,
-    Color color,
-    Function() onTap,
-    String title,
-  ) {
+  final List<Map<String, String>> listImageLeft = [
+    {
+      'name': 'Korea',
+      'image': AssetHelper.korea,
+    },
+    {
+      'name': 'Dubai',
+      'image': AssetHelper.dubai,
+    },
+  ];
+  final List<Map<String, String>> listImageRight = [
+    {
+      'name': 'Turkey',
+      'image': AssetHelper.turkey,
+    },
+    {
+      'name': 'Japan',
+      'image': AssetHelper.japan,
+    },
+  ];
+
+  Widget _buildItemCategory(
+      Widget icon, Color color, Function() onTap, String title) {
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -29,48 +49,108 @@ class _HomeScreenState extends State<HomeScreen> {
               vertical: kMediumPadding,
             ),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(
-                kItemPadding,
-              ),
-            ),
+                color: color.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(kItemPadding)),
             child: icon,
           ),
-          SizedBox(height: kItemPadding),
-          Text(title),
+          SizedBox(
+            height: kItemPadding,
+          ),
+          Text(title)
         ],
+      ),
+    );
+  }
+
+  Widget _buidlImageHomScreen(String name, String image) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(HotelBookingScreen.routeName, arguments: name);
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: kDefaultPadding),
+        child: Stack(
+          alignment: Alignment.topRight,
+          children: [
+            ImageHelper.loadFromAsset(
+              image,
+              width: double.infinity,
+              fit: BoxFit.fitWidth,
+              radius: BorderRadius.circular(kItemPadding),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(kDefaultPadding),
+              child: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+            ),
+            Positioned(
+              left: kDefaultPadding,
+              bottom: kDefaultPadding,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyles.defaultStyle.whiteTextColor.bold,
+                  ),
+                  SizedBox(
+                    height: kItemPadding,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(kMinPadding),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(kMinPadding),
+                      color: Colors.white.withOpacity(0.4),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Color(0xffFFC107),
+                        ),
+                        SizedBox(
+                          width: kItemPadding,
+                        ),
+                        Text('4.5')
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return AppBarContainerWidget(
+    return AppBarContainer(
+      titleString: 'home',
       title: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: kDefaultPadding,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: kItemPadding),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Hi Tourist!",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
+              children: [
+                Text('Hi Tourist!',
+                    style:
+                        TextStyles.defaultStyle.fontHeader.whiteTextColor.bold),
                 SizedBox(
                   height: kMediumPadding,
                 ),
                 Text(
-                  "Where are you going next?",
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
+                  'Where are you going next?',
+                  style: TextStyles.defaultStyle.fontCaption.whiteTextColor,
+                )
               ],
             ),
             Spacer(),
@@ -79,93 +159,156 @@ class _HomeScreenState extends State<HomeScreen> {
               size: kDefaultIconSize,
               color: Colors.white,
             ),
-            SizedBox(width: kTopPadding),
+            SizedBox(
+              width: kMinPadding,
+            ),
             Container(
-              width: 40,
               height: 40,
+              width: 40,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(kItemPadding),
+                borderRadius: BorderRadius.circular(
+                  kItemPadding,
+                ),
                 color: Colors.white,
               ),
-              padding: EdgeInsets.all(kTopPadding),
+              padding: EdgeInsets.all(kItemPadding),
               child: Icon(
                 FontAwesomeIcons.solidUser,
                 size: kDefaultIconSize,
                 color: ColorPalette.primaryColor,
               ),
-            )
+            ),
           ],
         ),
       ),
+      implementLeading: false,
       child: Column(
         children: [
           TextField(
+            enabled: true,
+            autocorrect: false,
             decoration: InputDecoration(
-              hintText: "Search your destination",
+              hintText: 'Search your destination',
               prefixIcon: Padding(
-                padding: EdgeInsets.all(kTopPadding),
+                padding: const EdgeInsets.all(8.0),
                 child: Icon(
                   FontAwesomeIcons.magnifyingGlass,
                   color: Colors.black,
-                  size: kDefaultPadding,
+                  size: 14,
                 ),
               ),
               filled: true,
               fillColor: Colors.white,
               border: OutlineInputBorder(
                 borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(kItemPadding)),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    kItemPadding,
+                  ),
+                ),
               ),
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: kItemPadding,
-              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: kItemPadding),
             ),
+            style: TextStyles.defaultStyle,
+            onChanged: (value) {},
+            onSubmitted: (String submitValue) {},
           ),
-          SizedBox(height: kDefaultPadding),
+          SizedBox(
+            height: kDefaultPadding,
+          ),
           Row(
             children: [
               Expanded(
-                child: _builtItemCategory(
-                  Icon(
-                    FontAwesomeIcons.hotel,
-                    size: kBottomBarIconSize,
-                  ),
-                  Color(0xffFE9C5E),
-                  () {
-                    Navigator.of(context).pushNamed(HotelBookingScreen.routeName);
-                  },
-                  "Hotels",
-                ),
+                child: _buildItemCategory(
+                    ImageHelper.loadFromAsset(
+                      AssetHelper.iconHotel,
+                      width: kDefaultIconSize,
+                      height: kDefaultIconSize,
+                    ),
+                    Color(0xffFE9C5E), () {
+                  Navigator.of(context).pushNamed(HotelBookingScreen.routeName);
+                }, 'Hotels'),
               ),
-              SizedBox(
-                width: kDefaultPadding,
-              ),
+              SizedBox(width: kDefaultPadding),
               Expanded(
-                child: _builtItemCategory(
-                  Icon(
-                    FontAwesomeIcons.car,
-                    size: kBottomBarIconSize,
-                  ),
-                  Color(0xffF77777),
-                  () {},
-                  "Cabs",
-                ),
+                child: _buildItemCategory(
+                    ImageHelper.loadFromAsset(
+                      AssetHelper.iconPlane,
+                      width: kDefaultIconSize,
+                      height: kDefaultIconSize,
+                    ),
+                    Color(0xffF77777),
+                    () {},
+                    'Transport'),
               ),
-              SizedBox(
-                width: kDefaultPadding,
-              ),
+              SizedBox(width: kDefaultPadding),
               Expanded(
-                child: _builtItemCategory(
-                  Icon(
-                    FontAwesomeIcons.globe,
-                    size: kBottomBarIconSize,
-                  ),
-                  Color(0xff3EC88C),
-                  () {},
-                  "All",
-                ),
+                child: _buildItemCategory(
+                    ImageHelper.loadFromAsset(
+                      AssetHelper.iconHotelPlane,
+                      width: kDefaultIconSize,
+                      height: kDefaultIconSize,
+                    ),
+                    Color(0xff3EC8BC),
+                    () {},
+                    'All'),
               ),
             ],
+          ),
+          SizedBox(
+            height: kMediumPadding,
+          ),
+          Row(
+            children: [
+              Text(
+                'Popular Destinations',
+                style: TextStyles.defaultStyle.bold,
+              ),
+              Spacer(),
+              Text(
+                'See All',
+                style: TextStyles.defaultStyle.bold.primaryTextColor,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: kMediumPadding,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: listImageLeft
+                          .map(
+                            (e) => _buidlImageHomScreen(
+                              e['name']!,
+                              e['image']!,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                  SizedBox(
+                    width: kDefaultPadding,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: listImageRight
+                          .map(
+                            (e) => _buidlImageHomScreen(
+                              e['name']!,
+                              e['image']!,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

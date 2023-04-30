@@ -21,4 +21,8 @@ class LocalStorageHelper {
   static setValue(String key, dynamic val) {
     _shared.hiveBox?.put(key, val);
   }
+
+  static deleteValue(String key) {
+    _shared.hiveBox?.delete(key);
+  }
 }
