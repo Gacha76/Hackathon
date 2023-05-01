@@ -12,7 +12,7 @@ import 'package:hekkathon/widgets/item_options_booking.dart';
 class HotelBookingScreen extends StatefulWidget {
   const HotelBookingScreen({super.key, this.destination});
 
-  static const String routeName = "/screens/hotel_booking_screen";
+  static const String routeName = "/hotel_booking_screen";
 
   final String? destination;
 

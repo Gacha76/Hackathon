@@ -8,7 +8,7 @@ import 'package:hekkathon/widgets/item_change_guest_and_room.dart';
 class GuestAndRoomBookingScreen extends StatefulWidget {
   const GuestAndRoomBookingScreen({super.key});
 
-  static const String routeName = '/screens/guest_and_room_booking_screen';
+  static const String routeName = '/guest_and_room_booking_screen';
 
   @override
   State<GuestAndRoomBookingScreen> createState() =>

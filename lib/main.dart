@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         primaryColor: ColorPalette.primaryColor,
         scaffoldBackgroundColor: ColorPalette.backgroundScaffoldColor,
       ),
+      routes: routes,
       onGenerateRoute: generateRoutes,
       home: Builder(
         builder: (context) {

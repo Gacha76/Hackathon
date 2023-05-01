@@ -14,7 +14,7 @@ import 'package:hekkathon/widgets/item_room_widget.dart';
 class CheckOutScreen extends StatefulWidget {
   const CheckOutScreen({super.key, required this.roomModel});
 
-  static const String routeName = '/screens/check_out_screen';
+  static const String routeName = '/check_out_screen';
 
   final RoomModel roomModel;
 

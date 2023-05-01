@@ -8,7 +8,7 @@ import 'package:hekkathon/screens/welcome_screen.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
-  static const routeName = '/screens/splash_screen';
+  static String routeName = '/splash_screen';
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -27,8 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 2));
     if (ignoreIntroScreen ?? false) {
       if (context.mounted) {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const WelcomeScreen()));
+        Navigator.of(context).pushNamed(WelcomeScreen.routeName);
       }
     } else {
       LocalStorageHelper.setValue("ignoreIntroScreen", true);

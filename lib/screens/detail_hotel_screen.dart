@@ -11,7 +11,7 @@ import 'package:hekkathon/widgets/item_button_widget.dart';
 import 'package:hekkathon/widgets/item_utility_hotel.dart';
 
 class DetailHotelScreen extends StatefulWidget {
-  static const String routeName = '/screens/detail_hotel_screen';
+  static const String routeName = '/detail_hotel_screen';
 
   const DetailHotelScreen({
     super.key,
