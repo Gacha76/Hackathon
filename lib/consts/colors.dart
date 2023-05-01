@@ -20,7 +20,7 @@ class Gradients {
     end: Alignment.bottomLeft,
     colors: [
       ColorPalette.secondColor,
-      ColorPalette.primaryColor,
+      Color.fromARGB(255, 99, 87, 204),
     ],
   );
 }
