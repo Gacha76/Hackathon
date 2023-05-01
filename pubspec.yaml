@@ -40,10 +40,13 @@ dependencies:
   hive_flutter: ^1.1.0
   salomon_bottom_bar: ^3.3.2
   font_awesome_flutter: ^10.4.0
-  intl: ^0.18.1
+  intl: ^0.17.0
   syncfusion_flutter_datepicker: ^21.1.41
   flutter_svg: ^2.0.5
   introduction_screen: ^3.1.8
+  
+
+  
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +58,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_map_marker_cluster: ^0.4.4
+  flutter_map_marker_popup: ^2.1.2
+  http: ^0.13.0
+  location: ^4.4.0
+  syncfusion_flutter_maps: ^21.1.37
+  latlong2: ^0.8.1
+  flutter_osm_plugin: ^0.51.0
+  
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -71,6 +83,37 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    #Markers    
+    - assets/map/red.svg
+    - assets/map/yellow.svg
+    - assets/map/green.svg
+    - assets/map/current.svg
+    - assets/map/blue.svg
+#hospitals    
+    - assets/map/hospitals/SDM.jpg
+    - assets/map/hospitals/sdmm.jpg
+#spots
+    - assets/map/spots/isckon.jpg
+    - assets/map/spots/Myl.jpg
+    - assets/map/spots/npb.jpg
+    - assets/map/spots/nugg.jpg
+    - assets/map/spots/unkal.jpg
+    - assets/map/spots/view.jpg
+    - assets/map/spots/water.jpg
+    - assets/map/tour.png
+#hotels
+    - assets/map/hotels/ana.jpg
+    - assets/map/hotels/den.jpg 
+    - assets/map/hotels/met.jpg
+    - assets/map/hotels/om.jpg   
+    - assets/map/hotels/phlox.jpg 
+    - assets/map/hotels/pres.jpg 
+    - assets/map/hotels/sha.jpg
+    - assets/map/hotels/leela.jpg  
+    - assets/map/hotels/oak.jpg 
+    - assets/map/hot.png
+    
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

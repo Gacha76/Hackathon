@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hekkathon/consts/colors.dart';
 import 'package:hekkathon/consts/dimensions.dart';
 import 'package:hekkathon/screens/home_screen.dart';
+import 'package:hekkathon/screens/mapsrc.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
           () => _currentIndex = i,
         ),
         selectedItemColor: ColorPalette.primaryColor,
-        unselectedItemColor: ColorPalette.primaryColor.withOpacity(0.2),
+        unselectedItemColor: Color.fromARGB(255, 99, 87, 204).withOpacity(0.2),
         selectedColorOpacity: 0.2,
         margin: EdgeInsets.symmetric(horizontal: kMediumPadding, vertical: kDefaultPadding),
         items: [
@@ -65,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
         index: _currentIndex,
         children: [
           HomeScreen(),
-          Container(),
+          Mapsrc(),
           Container(),
           Container(),
         ],
