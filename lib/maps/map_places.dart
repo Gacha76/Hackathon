@@ -25,7 +25,7 @@ final mapMarkers = [
   MapMarker(
       image: 'assets/map/spots/view.jpg',
       title: 'View point',
-      address: 'Hello',
+      address: '',
       location: LatLng(15.428304680703018, 74.9880539984009),
       rating: 4),
   MapMarker(

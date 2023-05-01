@@ -53,7 +53,7 @@ class _MainScreenState extends State<MainScreen> {
               FontAwesomeIcons.briefcase,
               size: kDefaultPadding,
             ),
-            title: Text("Booking"),
+            title: Text("Budgeting"),
           ),
           SalomonBottomBarItem(
             icon: Icon(
