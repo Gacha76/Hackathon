@@ -8,7 +8,7 @@ import 'package:hekkathon/widgets/item_room_widget.dart';
 class RoomsScreen extends StatefulWidget {
   const RoomsScreen({super.key});
 
-  static const String routeName = '/screens/rooms_screen';
+  static const String routeName = '/rooms_screen';
 
   @override
   State<RoomsScreen> createState() => _RoomsScreenState();

@@ -9,7 +9,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
-  static const routeName = "/screens/main_screen";
+  static const routeName = "/main_screen";
 
   @override
   State<MainScreen> createState() => _MainScreenState();

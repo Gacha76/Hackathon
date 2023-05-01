@@ -9,7 +9,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 class SelectDateScreen extends StatelessWidget {
   SelectDateScreen({super.key});
 
-  static const routeName = '/screens/select_date_screen';
+  static const routeName = '/select_date_screen';
 
   DateTime? rangeStartDate;
   DateTime? rangeEndDate;

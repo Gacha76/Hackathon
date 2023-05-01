@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:hekkathon/consts/dimensions.dart';
 import 'package:hekkathon/consts/text_style.dart';
 import 'package:hekkathon/helper/asset_helper.dart';
-import 'package:hekkathon/screens/main_screen.dart';
+import 'package:hekkathon/screens/welcome_screen.dart';
 import 'package:hekkathon/widgets/item_intro_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
 
-  static const routeName = '/screens/intro_screen';
+  static const routeName = '/intro_screen';
 
   @override
   State<IntroScreen> createState() => _IntroScreenState();
@@ -81,7 +81,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 GestureDetector(
                   onTap: () {
                     if (_pageController.page == 2) {
-                      Navigator.of(context).pushNamed(MainScreen.routeName);
+                      Navigator.of(context).pushNamed(WelcomeScreen.routeName);
                     } else {
                       _pageController.nextPage(
                           duration: Duration(milliseconds: 200),

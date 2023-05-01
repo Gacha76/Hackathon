@@ -8,7 +8,7 @@ import 'package:hekkathon/widgets/item_hotel_widget.dart';
 class HotelScreen extends StatefulWidget {
   const HotelScreen({super.key});
 
-  static const String routeName = '/screens/hotel_screen';
+  static const String routeName = '/hotel_screen';
 
   @override
   State<HotelScreen> createState() => _HotelScreenState();

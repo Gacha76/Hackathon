@@ -5,7 +5,7 @@ import 'package:hekkathon/screens/main_screen.dart';
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
-  static const routeName = '/screens/welcome_screen';
+  static const routeName = '/welcome_screen';
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
