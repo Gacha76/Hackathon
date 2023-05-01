@@ -5,6 +5,7 @@ import 'package:hekkathon/consts/dimensions.dart';
 import 'package:hekkathon/screens/home_screen.dart';
 import 'package:hekkathon/screens/mapsrc.dart';
 import 'package:hekkathon/screens/new_filter_screen.dart';
+import 'package:hekkathon/screens/profile_screen.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -69,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
           HomeScreen(),
           Mapsrc(),
           NewFilterScreen(),
-          Container(),
+          ProfileScreen(),
         ],
       ),
     );
