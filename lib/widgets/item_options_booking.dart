@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:hekkathon/consts/dimensions.dart';
+import 'package:hekkathon/consts/text_style.dart';
+import 'package:hekkathon/helper/image_helper.dart';
 
-class ItemBookingWidget extends StatelessWidget {
-  const ItemBookingWidget({
+class ItemOptionsBookingWidget extends StatelessWidget {
+  const ItemOptionsBookingWidget({
     super.key,
-    required this.icon,
     required this.title,
-    required this.description,
-    this.onTap,
+    required this.value,
+    required this.icon,
+    required this.onTap,
   });
 
-  final IconData icon;
   final String title;
-  final String description;
+  final String value;
+  final String icon;
   final Function()? onTap;
 
   @override
@@ -22,35 +24,34 @@ class ItemBookingWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(kDefaultPadding),
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(kTopPadding),
           color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(kItemPadding),
-          ),
         ),
+        margin: EdgeInsets.only(bottom: kMediumPadding),
         child: Row(
           children: [
-            Icon(
+            ImageHelper.loadFromAsset(
               icon,
-              size: kBottomBarIconSize,
             ),
-            SizedBox(width: kDefaultPadding),
+            SizedBox(
+              width: kDefaultPadding,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
+                  style: TextStyles.defaultStyle.fontCaption,
                 ),
                 SizedBox(
                   height: kMinPadding,
                 ),
                 Text(
-                  description,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  value,
+                  style: TextStyles.defaultStyle.bold,
                 ),
               ],
-            ),
+            )
           ],
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hekkathon/consts/colors.dart';
 import 'package:hekkathon/consts/routes.dart';
 import 'package:hekkathon/helper/local_storage_helper.dart';
+import 'package:hekkathon/helper/size_config.dart';
 import 'package:hekkathon/screens/splash_screen.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -23,8 +24,13 @@ class MyApp extends StatelessWidget {
         primaryColor: ColorPalette.primaryColor,
         scaffoldBackgroundColor: ColorPalette.backgroundScaffoldColor,
       ),
-      routes: routes,
-      home: const SplashScreen(),
+      onGenerateRoute: generateRoutes,
+      home: Builder(
+        builder: (context) {
+          SizeConfig.init(context);
+          return SplashScreen();
+        },
+      ),
     );
   }
 }

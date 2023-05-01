@@ -25,9 +25,10 @@ class _SplashScreenState extends State<SplashScreen> {
     final ignoreIntroScreen =
         LocalStorageHelper.getValue("ignoreIntroScreen") as bool?;
     await Future.delayed(const Duration(seconds: 2));
-    if (ignoreIntroScreen != null && ignoreIntroScreen) {
+    if (ignoreIntroScreen ?? false) {
       if (context.mounted) {
-        Navigator.of(context).pushNamed(WelcomeScreen.routeName);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const WelcomeScreen()));
       }
     } else {
       LocalStorageHelper.setValue("ignoreIntroScreen", true);
